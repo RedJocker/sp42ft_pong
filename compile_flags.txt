@@ -1,0 +1,8 @@
+-I
+./
+-I
+./MLX42/include
+-ldl
+-lglfw
+-pthread
+-lm
