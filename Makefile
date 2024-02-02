@@ -9,7 +9,7 @@ DEP_FLAGS := -MP -MD -MF
 DEP_DIR := ./dep/
 DEP_FILES := $(addprefix $(DEP_DIR), $(addsuffix .d, $(OBJS)))
 INCLUDES := -I./ -I$(LIBMLX_DIR)/include
-CFLAGS := -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS := -Wall -Wextra -Werror -g -fsanitize=address -fsanitize=undefined
 LFLAGS := -ldl -lglfw -pthread -lm
 CC := cc
 
@@ -21,7 +21,7 @@ $(NAME): $(OBJS) $(LIBMLX)
 	etags $$(find . -name '*.[ch]')
 
 $(OBJS): %.o : %.c | $(DEP_DIR)
-	$(CC) $(CFLAGS) -c $< $(INCLUDES) $(LFLAGS) -o $@ $(DEP_FLAGS) "$(DEP_DIR)$@.d"
+	$(CC) $(CFLAGS) -c $< $(INCLUDES) -o $@ $(DEP_FLAGS) "$(DEP_DIR)$@.d"
 
 $(DEP_DIR):
 	@mkdir -p $@
