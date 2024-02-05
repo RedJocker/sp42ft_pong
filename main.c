@@ -6,7 +6,7 @@
 /*   By: maurodri <maurodri@student.42sp...>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 15:28:12 by maurodri          #+#    #+#             */
-/*   Updated: 2024/02/04 04:21:47 by maurodri         ###   ########.fr       */
+/*   Updated: 2024/02/05 08:22:34 by maurodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 // 32 * 16
 #define WIDTH 512
 #define HEIGHT 512
+#define MAX_ANGLE (4.0 * M_PI / 9.0)
 
 typedef enum e_exit_status
 {
@@ -183,9 +184,6 @@ void	paddle_key_listener(
 	}
 	paddle->pos.y += paddle->vel.y * mlx->delta_time;
 }
-
-
-#define MAX_ANGLE (4.0 * M_PI / 9.0)
 
 void	paddle_reflection(t_object *paddle, t_object *ball)
 {
